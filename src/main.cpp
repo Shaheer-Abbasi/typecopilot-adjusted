@@ -1,6 +1,7 @@
 #include <llvm/Passes/PassBuilder.h>
 #include <llvm/Passes/PassPlugin.h>
 
+#include "IREmitter.hpp"
 #include "TypeCopilot.hpp"
 #include "ValueDumper.hpp"
 #include "IdentifyProg.hpp"
@@ -57,6 +58,11 @@ llvm::PassPluginLibraryInfo getTypeCopilotPluginInfo() {
 
                         if (Name == "tbaaprofile") {
                             MPM.addPass(TBAAProfile());
+                            return true;
+                        }
+
+                        if (Name == "iremitter") {
+                            MPM.addPass(IREmitter());
                             return true;
                         }
 

@@ -36,3 +36,15 @@ bc/
 .vscode/
 venv
 bc_with_src/
+
+# Deferred work
+src/IREmitter.hpp
+calculate_accuracy.py
+
+# Build output dirs
+build-llvm14/
+build-llvm16/
+
+# Test artifacts
+*.bc
+*_recovered.txt

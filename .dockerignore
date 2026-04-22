@@ -1,0 +1,7 @@
+build
+build-llvm16
+.git
+**/._*
+*._*
+*.pyc
+__pycache__

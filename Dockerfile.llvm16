@@ -1,0 +1,18 @@
+# LLVM 16 toolchain (Ubuntu 24.04 packages). Matches common macOS Homebrew llvm@16 layouts.
+#
+# Build:  make docker-build-llvm16
+#        (streams a tar context so exFAT "._*" sidecars do not break Docker Desktop.)
+# Shell:  make docker-shell-llvm16
+#
+# Override install prefix if your image puts LLVM elsewhere, e.g.:
+#   make docker-examples-llvm16 LLVM_DOCKER_DIR=/opt/llvm-16
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential cmake ninja-build python3 ca-certificates \
+    llvm-16-dev llvm-16-tools clang-16 \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV LLVM_DIR=/usr/lib/llvm-16
+WORKDIR /work
