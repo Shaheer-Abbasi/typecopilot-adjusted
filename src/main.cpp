@@ -1,7 +1,6 @@
 #include <llvm/Passes/PassBuilder.h>
 #include <llvm/Passes/PassPlugin.h>
 
-#include "IREmitter.hpp"
 #include "TypeCopilot.hpp"
 #include "ValueDumper.hpp"
 #include "IdentifyProg.hpp"
@@ -61,10 +60,11 @@ llvm::PassPluginLibraryInfo getTypeCopilotPluginInfo() {
                             return true;
                         }
 
-                        if (Name == "iremitter") {
-                            MPM.addPass(IREmitter());
-                            return true;
-                        }
+                        // IREmitter pass deferred
+                        // if (Name == "iremitter") {
+                        //     MPM.addPass(IREmitter());
+                        //     return true;
+                        // }
 
                         return false;
                     });
